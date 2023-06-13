@@ -1,0 +1,122 @@
+/* This is a CSS code that defines various styles for a web page. It imports the DM Sans font from
+Google Fonts and sets it as the default font for the page. It also sets some global styles for all
+elements, such as removing margins and padding, and hiding the outline and tap highlight color. */
+/* import dm sans google font */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font: "DM Sans", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline-color: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font);
+  color: var(--dark);
+  position: relative;
+  overflow-x: hidden;
+  @apply text-sm lg:text-base;
+}
+
+#root {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  grid-template-columns: minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+#root > main {
+  @apply pb-24;
+}
+
+.universal_x {
+  @apply px-4 md:px-16 lg:px-32 xl:px-48;
+}
+
+.universal_x_margin {
+  @apply mx-8 md:mx-16 lg:mx-32 xl:mx-48;
+}
+
+.main_btn {
+  @apply whitespace-nowrap rounded-full px-5 py-2 text-sm font-semibold text-white lg:text-base;
+  transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.main_btn.transparent {
+  @apply border border-primaryBlue text-primaryBlue hover:bg-primaryBlue hover:text-white focus:bg-primaryBlue focus:text-white;
+}
+
+.main_btn.themed {
+  @apply bg-primaryBlue text-white hover:bg-darkerBlue focus:bg-darkerBlue;
+}
+
+.main_btn.light_grey {
+  @apply bg-gray-300 text-black;
+}
+
+/* style react toastify */
+.Toastify__toast-body {
+  font-family: var(--font) !important;
+  @apply !text-sm;
+}
+
+.details {
+  height: 0;
+  overflow: hidden;
+}
+
+.details.open {
+  height: auto;
+}
+
+/* float animation */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Hide horizontal scrollbar */
+.scroll_container::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll_container {
+  scroll-padding-left: 10px;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+}
+
+.scroll_container > div > * {
+  scroll-snap-align: start;
+}
+
+.stacked {
+  display: grid;
+  align-items: end;
+}
+
+.stacked > * {
+  grid-row: 1/-1;
+  grid-column: 1/-1;
+}
